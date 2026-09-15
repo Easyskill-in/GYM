@@ -1,0 +1,3762 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gym Flex — Strength training in Adajan, Surat | Concept Website</title>
+  <meta name="description"
+    content="Concept website for Gym Flex, a strength and fitness centre on Honey Park Road, Adajan, Surat. Book a free trial, view facilities, trainers and membership options.">
+  <meta name="robots" content="noindex,nofollow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Gym Flex — Adajan, Surat">
+  <meta property="og:description"
+    content="Concept website design for Gym Flex, Adajan, Surat. Created for presentation purposes.">
+  <meta property="og:image"
+    content="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=70">
+  <meta name="theme-color" content="#0B0A09">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230B0A09'/><text x='16' y='23' font-size='20' font-family='sans-serif' font-weight='900' fill='%23FF9A1F' text-anchor='middle'>F</text></svg>">
+
+  <style>
+    /* ============================================================
+   GYM FLEX — concept site
+   Design tokens
+   ============================================================ */
+    :root {
+      /* colour */
+      --bg: #0B0A09;
+      --bg-alt: #100E0C;
+      --surface: #16130F;
+      --surface-2: #1E1A15;
+      --text: #F3F0E9;
+      --muted: #9C958A;
+      --muted-dim: #6E6860;
+      --accent: #FF9A1F;
+      --accent-deep: #DE7A0A;
+      --line: rgba(243, 240, 233, .12);
+      --line-soft: rgba(243, 240, 233, .07);
+
+      /* type */
+      --display: 'Archivo Black', 'Arial Black', system-ui, sans-serif;
+      --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+      --fs-hero: clamp(2.9rem, 10.5vw, 8.6rem);
+      --fs-h2: clamp(2rem, 5.1vw, 4.05rem);
+      --fs-h3: clamp(1.35rem, 2.5vw, 2rem);
+      --fs-lead: clamp(1.02rem, 1.55vw, 1.28rem);
+      --fs-body: 1rem;
+      --fs-sm: .875rem;
+      --fs-label: .72rem;
+
+      /* space scale (8px based) */
+      --s-1: .5rem;
+      --s-2: 1rem;
+      --s-3: 1.5rem;
+      --s-4: 2rem;
+      --s-5: 3rem;
+      --s-6: 4rem;
+      --s-7: 6rem;
+      --s-8: 8rem;
+      --section-y: clamp(4.5rem, 11vw, 10.5rem);
+
+      /* layout */
+      --container: 1320px;
+      --gutter: clamp(1.25rem, 4vw, 3.5rem);
+      --radius-sm: 4px;
+      --radius-md: 10px;
+      --radius-lg: 18px;
+
+      --ease: cubic-bezier(.22, .61, .36, 1);
+      --dur: .45s;
+    }
+
+    /* ============================================================
+   Base
+   ============================================================ */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 84px;
+      -webkit-text-size-adjust: 100%
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: var(--fs-body);
+      line-height: 1.65;
+      font-weight: 400;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    body.no-scroll {
+      overflow: hidden
+    }
+
+    img {
+      max-width: 100%;
+      display: block
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+      color: inherit
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      margin: 0;
+      font-weight: 400;
+      line-height: 1.02;
+      letter-spacing: -.025em
+    }
+
+    p {
+      margin: 0
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 2px
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: #120D05
+    }
+
+    /* subtle film grain over the whole page */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 9;
+      pointer-events: none;
+      opacity: .5;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.055'/%3E%3C/svg%3E");
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--container);
+      margin-inline: auto;
+      padding-inline: var(--gutter)
+    }
+
+    .section {
+      padding-block: var(--section-y);
+      position: relative
+    }
+
+    .section--alt {
+      background: var(--bg-alt)
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+      border: 0
+    }
+
+    .skip-link {
+      position: absolute;
+      left: var(--s-2);
+      top: -100px;
+      z-index: 200;
+      background: var(--accent);
+      color: #120D05;
+      padding: .7rem 1.1rem;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      transition: top .2s
+    }
+
+    .skip-link:focus {
+      top: var(--s-2)
+    }
+
+    /* ============================================================
+   Typography helpers
+   ============================================================ */
+    .display {
+      font-family: var(--display);
+      text-transform: uppercase;
+      letter-spacing: -.03em;
+      line-height: .92
+    }
+
+    .eyebrow {
+      font-size: var(--fs-label);
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: .7rem;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: var(--accent);
+      flex: none
+    }
+
+    .lead {
+      font-size: var(--fs-lead);
+      color: var(--muted);
+      line-height: 1.62;
+      max-width: 56ch;
+      font-weight: 300
+    }
+
+    .h2 {
+      font-family: var(--display);
+      text-transform: uppercase;
+      font-size: var(--fs-h2);
+      line-height: .94;
+      letter-spacing: -.03em
+    }
+
+    .h3 {
+      font-family: var(--display);
+      text-transform: uppercase;
+      font-size: var(--fs-h3);
+      letter-spacing: -.02em
+    }
+
+    .accent {
+      color: var(--accent)
+    }
+
+    .section-head {
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-2);
+      margin-bottom: var(--s-6);
+      max-width: 70ch
+    }
+
+    .section-head .h2 {
+      margin-top: .35rem
+    }
+
+    /* ============================================================
+   Buttons
+   ============================================================ */
+    .btn {
+      --btn-bg: var(--accent);
+      --btn-fg: #140D03;
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .65rem;
+      padding: 1.02rem 1.85rem;
+      min-height: 52px;
+      background: var(--btn-bg);
+      color: var(--btn-fg);
+      border: 1px solid transparent;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      font-size: .795rem;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      transition: transform .25s var(--ease), background .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease);
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      background: #FFB454;
+      transform: translateY(-2px)
+    }
+
+    .btn:active {
+      transform: translateY(0)
+    }
+
+    .btn--ghost {
+      --btn-bg: transparent;
+      --btn-fg: var(--text);
+      border-color: var(--line)
+    }
+
+    .btn--ghost:hover {
+      background: rgba(243, 240, 233, .07);
+      border-color: rgba(243, 240, 233, .32)
+    }
+
+    .btn--light {
+      --btn-bg: var(--text);
+      --btn-fg: #100E0C
+    }
+
+    .btn--light:hover {
+      background: #fff
+    }
+
+    .btn--sm {
+      padding: .7rem 1.15rem;
+      min-height: 42px;
+      font-size: .7rem
+    }
+
+    .btn--block {
+      width: 100%
+    }
+
+    .btn__arrow {
+      transition: transform .3s var(--ease)
+    }
+
+    .btn:hover .btn__arrow {
+      transform: translateX(4px)
+    }
+
+    /* ============================================================
+   Scroll progress + demo ribbon
+   ============================================================ */
+    .progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      width: 100%;
+      z-index: 120;
+      background: transparent;
+      pointer-events: none
+    }
+
+    .progress__bar {
+      height: 100%;
+      width: 0;
+      background: var(--accent);
+      transform-origin: left
+    }
+
+    .demo-ribbon {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      z-index: 95;
+      background: rgba(11, 10, 9, .78);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid var(--line-soft);
+      border-right: 1px solid var(--line-soft);
+      padding: .45rem .9rem;
+      font-size: .66rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--muted-dim);
+      border-radius: 0 6px 0 0;
+    }
+
+    .demo-ribbon b {
+      color: var(--accent);
+      font-weight: 600
+    }
+
+    /* ============================================================
+   Navigation
+   ============================================================ */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      transition: background .4s var(--ease), border-color .4s var(--ease), backdrop-filter .4s var(--ease);
+      border-bottom: 1px solid transparent;
+    }
+
+    .nav.is-stuck {
+      background: rgba(11, 10, 9, .86);
+      backdrop-filter: blur(16px) saturate(140%);
+      border-bottom-color: var(--line-soft)
+    }
+
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--s-3);
+      height: 84px;
+      transition: height .4s var(--ease)
+    }
+
+    .nav.is-stuck .nav__inner {
+      height: 70px
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      font-family: var(--display);
+      font-size: 1.12rem;
+      text-transform: uppercase;
+      letter-spacing: -.01em;
+      line-height: 1
+    }
+
+    .logo__mark {
+      width: 30px;
+      height: 30px;
+      flex: none;
+      border-radius: 3px;
+      background: var(--accent);
+      display: grid;
+      place-items: center;
+      color: #140D03;
+      font-size: .95rem;
+    }
+
+    .logo__sub {
+      display: block;
+      font-family: var(--sans);
+      font-size: .55rem;
+      letter-spacing: .24em;
+      color: var(--muted-dim);
+      font-weight: 600;
+      margin-top: 3px
+    }
+
+    .nav__links {
+      display: flex;
+      align-items: center;
+      gap: .35rem
+    }
+
+    .nav__link {
+      position: relative;
+      padding: .55rem .78rem;
+      font-size: .78rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+      color: var(--muted);
+      transition: color .25s;
+      border-radius: 3px;
+    }
+
+    .nav__link:hover {
+      color: var(--text)
+    }
+
+    .nav__link::after {
+      content: "";
+      position: absolute;
+      left: .78rem;
+      right: .78rem;
+      bottom: .28rem;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .3s var(--ease);
+    }
+
+    .nav__link.is-active {
+      color: var(--text)
+    }
+
+    .nav__link.is-active::after {
+      transform: scaleX(1)
+    }
+
+    .nav__actions {
+      display: flex;
+      align-items: center;
+      gap: .6rem
+    }
+
+    .burger {
+      display: none;
+      width: 46px;
+      height: 46px;
+      background: none;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      position: relative;
+    }
+
+    .burger span {
+      position: absolute;
+      left: 13px;
+      width: 20px;
+      height: 1.5px;
+      background: var(--text);
+      transition: transform .3s var(--ease), opacity .2s
+    }
+
+    .burger span:nth-child(1) {
+      top: 17px
+    }
+
+    .burger span:nth-child(2) {
+      top: 23px
+    }
+
+    .burger span:nth-child(3) {
+      top: 29px
+    }
+
+    .burger[aria-expanded="true"] span:nth-child(1) {
+      transform: translateY(6px) rotate(45deg)
+    }
+
+    .burger[aria-expanded="true"] span:nth-child(2) {
+      opacity: 0
+    }
+
+    .burger[aria-expanded="true"] span:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg)
+    }
+
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      z-index: 99;
+      background: var(--bg);
+      padding: 110px var(--gutter) var(--s-5);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transform: translateY(-100%);
+      visibility: hidden;
+      transition: transform .5s var(--ease), visibility .5s;
+    }
+
+    .mobile-menu.is-open {
+      transform: translateY(0);
+      visibility: visible
+    }
+
+    .mobile-menu__list {
+      display: flex;
+      flex-direction: column;
+      gap: .15rem
+    }
+
+    .mobile-menu__link {
+      font-family: var(--display);
+      text-transform: uppercase;
+      font-size: clamp(1.6rem, 7.5vw, 2.4rem);
+      padding: .32rem 0;
+      border-bottom: 1px solid var(--line-soft);
+      display: flex;
+      align-items: baseline;
+      gap: .9rem;
+      color: var(--text);
+    }
+
+    .mobile-menu__link span {
+      font-family: var(--sans);
+      font-size: .62rem;
+      color: var(--muted-dim);
+      letter-spacing: .14em;
+      font-weight: 600
+    }
+
+    .mobile-menu__foot {
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-2);
+      padding-top: var(--s-4)
+    }
+
+    .mobile-menu__meta {
+      font-size: .78rem;
+      color: var(--muted);
+      line-height: 1.7
+    }
+
+    /* ============================================================
+   Hero
+   ============================================================ */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      isolation: isolate
+    }
+
+    .hero__media {
+      position: absolute;
+      inset: 0;
+      z-index: -2
+    }
+
+    .hero__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 35%;
+      filter: grayscale(.32) contrast(1.06) brightness(.72)
+    }
+
+    .hero__scrim {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(to top, var(--bg) 2%, rgba(11, 10, 9, .62) 42%, rgba(11, 10, 9, .35) 70%, rgba(11, 10, 9, .78) 100%),
+        linear-gradient(to right, rgba(11, 10, 9, .82) 0%, rgba(11, 10, 9, .25) 58%, rgba(11, 10, 9, .55) 100%);
+    }
+
+    .hero__inner {
+      width: 100%;
+      padding-block: clamp(6rem, 14vh, 9rem) clamp(4.5rem, 9vh, 6.5rem)
+    }
+
+    .hero__loc {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      font-size: .7rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--text);
+      font-weight: 600;
+      border: 1px solid var(--line);
+      background: rgba(11, 10, 9, .42);
+      backdrop-filter: blur(6px);
+      padding: .5rem .9rem;
+      border-radius: 100px;
+      margin-bottom: var(--s-3);
+    }
+
+    .hero__loc i {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex: none;
+      animation: pulse 2.6s infinite
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1)
+      }
+
+      50% {
+        opacity: .35;
+        transform: scale(.8)
+      }
+    }
+
+    .hero h1 {
+      font-family: var(--display);
+      text-transform: uppercase;
+      font-size: var(--fs-hero);
+      line-height: .86;
+      letter-spacing: -.035em;
+      max-width: 14ch
+    }
+
+    .hero h1 .line {
+      display: block;
+      overflow: hidden
+    }
+
+    .hero h1 .line i {
+      display: block;
+      font-style: normal;
+      transform: translateY(105%);
+      transition: transform 1.05s var(--ease)
+    }
+
+    .hero.is-ready h1 .line i {
+      transform: translateY(0)
+    }
+
+    .hero h1 .line:nth-child(2) i {
+      transition-delay: .11s
+    }
+
+    .hero__outline {
+      -webkit-text-stroke: 1.4px rgba(243, 240, 233, .62);
+      color: transparent
+    }
+
+    .hero__bottom {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: var(--s-4);
+      margin-top: var(--s-4);
+    }
+
+    .hero__copy {
+      max-width: 44ch;
+      font-size: var(--fs-lead);
+      color: rgba(243, 240, 233, .82);
+      font-weight: 300;
+      line-height: 1.6
+    }
+
+    .hero__ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+      margin-top: var(--s-3)
+    }
+
+    .hero__fade {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .8s var(--ease), transform .8s var(--ease)
+    }
+
+    .hero.is-ready .hero__fade {
+      opacity: 1;
+      transform: none
+    }
+
+    .hero.is-ready .hero__fade--d1 {
+      transition-delay: .35s
+    }
+
+    .hero.is-ready .hero__fade--d2 {
+      transition-delay: .48s
+    }
+
+    .hero__rating {
+      display: flex;
+      flex-direction: column;
+      gap: .3rem;
+      text-align: right;
+      flex: none
+    }
+
+    .hero__rating strong {
+      font-family: var(--display);
+      font-size: 2.6rem;
+      line-height: 1;
+      letter-spacing: -.03em
+    }
+
+    .hero__rating span {
+      font-size: .72rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted)
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 1.6rem;
+      right: var(--gutter);
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      font-size: .63rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .scroll-hint i {
+      display: block;
+      width: 1px;
+      height: 42px;
+      background: linear-gradient(var(--accent), transparent);
+      position: relative;
+      overflow: hidden
+    }
+
+    .scroll-hint i::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--bg);
+      animation: wipe 2.2s var(--ease) infinite
+    }
+
+    @keyframes wipe {
+      0% {
+        transform: translateY(-100%)
+      }
+
+      60%,
+      100% {
+        transform: translateY(100%)
+      }
+    }
+
+    /* ============================================================
+   Marquee / trust strip
+   ============================================================ */
+    .strip {
+      border-block: 1px solid var(--line-soft);
+      background: var(--bg-alt);
+      overflow: hidden
+    }
+
+    .strip__track {
+      display: flex;
+      gap: 3.2rem;
+      padding-block: .95rem;
+      width: max-content;
+      animation: slide 34s linear infinite
+    }
+
+    .strip__track span {
+      font-size: .72rem;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: var(--muted-dim);
+      display: flex;
+      align-items: center;
+      gap: 3.2rem;
+      white-space: nowrap;
+    }
+
+    .strip__track span::after {
+      content: "";
+      width: 5px;
+      height: 5px;
+      background: var(--accent);
+      border-radius: 50%;
+      opacity: .7
+    }
+
+    @keyframes slide {
+      to {
+        transform: translateX(-50%)
+      }
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--line-soft)
+    }
+
+    .stat {
+      padding: var(--s-5) var(--s-3);
+      border-right: 1px solid var(--line-soft);
+      border-bottom: 1px solid var(--line-soft)
+    }
+
+    .stat:last-child {
+      border-right: 0
+    }
+
+    .stat__num {
+      font-family: var(--display);
+      font-size: clamp(2rem, 4.4vw, 3.4rem);
+      line-height: 1;
+      letter-spacing: -.03em
+    }
+
+    .stat__num sup {
+      font-size: .42em;
+      color: var(--accent);
+      vertical-align: super;
+      margin-left: 2px
+    }
+
+    .stat__label {
+      margin-top: .7rem;
+      font-size: .74rem;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      color: var(--muted)
+    }
+
+    .stat__note {
+      margin-top: .3rem;
+      font-size: .72rem;
+      color: var(--muted-dim);
+      font-weight: 300
+    }
+
+    /* ============================================================
+   About
+   ============================================================ */
+    .about {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: clamp(2rem, 6vw, 5.5rem);
+      align-items: center
+    }
+
+    .about__media {
+      position: relative
+    }
+
+    .about__media img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      border-radius: var(--radius-md);
+      filter: grayscale(.2) contrast(1.05)
+    }
+
+    .about__badge {
+      position: absolute;
+      right: -14px;
+      bottom: -22px;
+      background: var(--accent);
+      color: #140D03;
+      padding: 1.15rem 1.35rem;
+      border-radius: var(--radius-md);
+      max-width: 200px;
+    }
+
+    .about__badge strong {
+      display: block;
+      font-family: var(--display);
+      font-size: 1.75rem;
+      line-height: 1;
+      text-transform: uppercase
+    }
+
+    .about__badge span {
+      display: block;
+      font-size: .68rem;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-top: .35rem;
+      opacity: .82
+    }
+
+    .about__body {
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-3);
+      align-items: flex-start
+    }
+
+    .about__points {
+      display: flex;
+      flex-direction: column;
+      gap: .85rem;
+      margin-top: .3rem;
+      width: 100%
+    }
+
+    .about__point {
+      display: flex;
+      gap: 1rem;
+      padding-bottom: .85rem;
+      border-bottom: 1px solid var(--line-soft)
+    }
+
+    .about__point h4 {
+      font-size: .95rem;
+      font-family: var(--sans);
+      font-weight: 600;
+      letter-spacing: 0
+    }
+
+    .about__point p {
+      font-size: .88rem;
+      color: var(--muted);
+      font-weight: 300;
+      margin-top: .22rem;
+      line-height: 1.6
+    }
+
+    .about__point b {
+      font-family: var(--display);
+      color: var(--accent);
+      font-size: .8rem;
+      flex: none;
+      padding-top: .15rem
+    }
+
+    /* ============================================================
+   Facilities
+   ============================================================ */
+    .facilities__head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: var(--s-3);
+      margin-bottom: var(--s-5)
+    }
+
+    .fac-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 1.05rem
+    }
+
+    .fac {
+      position: relative;
+      grid-column: span 2;
+      min-height: 290px;
+      overflow: hidden;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--line-soft);
+      isolation: isolate;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: var(--s-3);
+    }
+
+    .fac:nth-child(1),
+    .fac:nth-child(2) {
+      grid-column: span 3;
+      min-height: 360px
+    }
+
+    .fac img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+      filter: grayscale(.45) brightness(.62);
+      transition: transform .8s var(--ease), filter .6s var(--ease)
+    }
+
+    .fac::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(to top, rgba(11, 10, 9, .94) 8%, rgba(11, 10, 9, .35) 62%, rgba(11, 10, 9, .18))
+    }
+
+    .fac:hover img,
+    .fac:focus-within img {
+      transform: scale(1.06);
+      filter: grayscale(.1) brightness(.72)
+    }
+
+    .fac__no {
+      font-family: var(--display);
+      font-size: .72rem;
+      color: var(--accent);
+      letter-spacing: .08em
+    }
+
+    .fac h3 {
+      font-family: var(--display);
+      text-transform: uppercase;
+      font-size: 1.32rem;
+      margin-top: .5rem;
+      letter-spacing: -.02em
+    }
+
+    .fac p {
+      font-size: .86rem;
+      color: rgba(243, 240, 233, .7);
+      font-weight: 300;
+      margin-top: .5rem;
+      max-width: 40ch;
+      line-height: 1.55
+    }
+
+    .fac__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+      margin-top: .9rem
+    }
+
+    .fac__tags li {
+      font-size: .64rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      padding: .3rem .55rem;
+      border-radius: 100px
+    }
+
+    /* ============================================================
+   Trainers
+   ============================================================ */
+    .trainers {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.05rem
+    }
+
+    .trainer {
+      border: 1px solid var(--line-soft);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: var(--surface);
+      transition: border-color .35s var(--ease)
+    }
+
+    .trainer:hover {
+      border-color: rgba(255, 154, 31, .4)
+    }
+
+    .trainer__img {
+      position: relative;
+      aspect-ratio: 3/4;
+      overflow: hidden
+    }
+
+    .trainer__img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(.55) contrast(1.05) brightness(.88);
+      transition: filter .5s var(--ease), transform .7s var(--ease)
+    }
+
+    .trainer:hover .trainer__img img {
+      filter: grayscale(0) brightness(1);
+      transform: scale(1.04)
+    }
+
+    .trainer__tag {
+      position: absolute;
+      top: .8rem;
+      left: .8rem;
+      font-size: .58rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      background: rgba(11, 10, 9, .72);
+      backdrop-filter: blur(6px);
+      border: 1px solid var(--line);
+      padding: .28rem .5rem;
+      border-radius: 3px;
+      color: var(--muted)
+    }
+
+    .trainer__body {
+      padding: var(--s-3)
+    }
+
+    .trainer__body h3 {
+      font-family: var(--display);
+      text-transform: uppercase;
+      font-size: 1.05rem
+    }
+
+    .trainer__role {
+      font-size: .7rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-top: .4rem;
+      font-weight: 600
+    }
+
+    .trainer__bio {
+      font-size: .84rem;
+      color: var(--muted);
+      font-weight: 300;
+      margin-top: .7rem;
+      line-height: 1.6
+    }
+
+    .notice {
+      display: flex;
+      gap: .8rem;
+      align-items: flex-start;
+      margin-top: var(--s-4);
+      border-left: 2px solid var(--accent);
+      padding: .85rem 0 .85rem 1.1rem;
+      font-size: .82rem;
+      color: var(--muted);
+      font-weight: 300;
+      max-width: 72ch;
+      line-height: 1.6;
+    }
+
+    .notice b {
+      color: var(--text);
+      font-weight: 600
+    }
+
+    /* ============================================================
+   Membership
+   ============================================================ */
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.05rem;
+      align-items: start
+    }
+
+    .plan {
+      border: 1px solid var(--line-soft);
+      border-radius: var(--radius-md);
+      padding: var(--s-4);
+      background: var(--surface);
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-3);
+      transition: transform .35s var(--ease), border-color .35s var(--ease);
+    }
+
+    .plan:hover {
+      transform: translateY(-4px);
+      border-color: var(--line)
+    }
+
+    .plan--featured {
+      background: var(--surface-2);
+      border-color: rgba(255, 154, 31, .45);
+      position: relative
+    }
+
+    .plan--featured::before {
+      content: "Most popular";
+      position: absolute;
+      top: -11px;
+      left: var(--s-4);
+      background: var(--accent);
+      color: #140D03;
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      padding: .28rem .6rem;
+      border-radius: 3px;
+    }
+
+    .plan__name {
+      font-family: var(--display);
+      text-transform: uppercase;
+      font-size: 1.15rem;
+      letter-spacing: .01em
+    }
+
+    .plan__price {
+      display: flex;
+      align-items: baseline;
+      gap: .45rem
+    }
+
+    .plan__price b {
+      font-family: var(--display);
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      line-height: 1;
+      letter-spacing: -.03em
+    }
+
+    .plan__price span {
+      font-size: .78rem;
+      color: var(--muted)
+    }
+
+    .plan__desc {
+      font-size: .86rem;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.6
+    }
+
+    .plan__list {
+      display: flex;
+      flex-direction: column;
+      gap: .7rem;
+      border-top: 1px solid var(--line-soft);
+      padding-top: var(--s-3)
+    }
+
+    .plan__list li {
+      display: flex;
+      gap: .65rem;
+      font-size: .87rem;
+      color: rgba(243, 240, 233, .84);
+      font-weight: 300;
+      line-height: 1.5
+    }
+
+    .plan__list li svg {
+      flex: none;
+      margin-top: .28rem;
+      color: var(--accent)
+    }
+
+    .plan__list li.off {
+      color: var(--muted-dim)
+    }
+
+    .plan__list li.off svg {
+      color: var(--muted-dim);
+      opacity: .6
+    }
+
+    /* ============================================================
+   Transformation
+   ============================================================ */
+    .transform {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      border-block: 1px solid var(--line-soft)
+    }
+
+    .transform__bg {
+      position: absolute;
+      inset: 0;
+      z-index: -2
+    }
+
+    .transform__bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(.75) brightness(.4)
+    }
+
+    .transform::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(to right, rgba(11, 10, 9, .94), rgba(11, 10, 9, .55))
+    }
+
+    .transform__inner {
+      max-width: 62ch
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.05rem;
+      margin-top: var(--s-5)
+    }
+
+    .step {
+      border-top: 1px solid var(--line);
+      padding-top: var(--s-2)
+    }
+
+    .step b {
+      font-family: var(--display);
+      font-size: .78rem;
+      color: var(--accent);
+      letter-spacing: .06em
+    }
+
+    .step h4 {
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: .98rem;
+      margin-top: .5rem;
+      letter-spacing: 0
+    }
+
+    .step p {
+      font-size: .84rem;
+      color: var(--muted);
+      font-weight: 300;
+      margin-top: .4rem;
+      line-height: 1.6
+    }
+
+    /* ============================================================
+   Gallery
+   ============================================================ */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 150px;
+      gap: .85rem
+    }
+
+    .shot {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-sm);
+      border: 0;
+      padding: 0;
+      background: var(--surface);
+      cursor: zoom-in;
+      display: block
+    }
+
+    .shot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(.4) brightness(.82);
+      transition: transform .7s var(--ease), filter .5s var(--ease)
+    }
+
+    .shot:hover img,
+    .shot:focus-visible img {
+      transform: scale(1.07);
+      filter: grayscale(0) brightness(1)
+    }
+
+    .shot__cap {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: .75rem .85rem;
+      text-align: left;
+      font-size: .68rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--text);
+      background: linear-gradient(to top, rgba(11, 10, 9, .88), transparent);
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity .35s var(--ease), transform .35s var(--ease);
+    }
+
+    .shot:hover .shot__cap,
+    .shot:focus-visible .shot__cap {
+      opacity: 1;
+      transform: none
+    }
+
+    .shot--w2 {
+      grid-column: span 2
+    }
+
+    .shot--h2 {
+      grid-row: span 2
+    }
+
+    /* ============================================================
+   Reviews
+   ============================================================ */
+    .reviews {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.05rem
+    }
+
+    .review {
+      border: 1px solid var(--line-soft);
+      border-radius: var(--radius-md);
+      padding: var(--s-4);
+      background: var(--surface);
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-2)
+    }
+
+    .review__top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem
+    }
+
+    .stars {
+      display: flex;
+      gap: 2px;
+      color: var(--accent)
+    }
+
+    .review__src {
+      font-size: .62rem;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      color: var(--muted-dim)
+    }
+
+    .review p {
+      font-size: .96rem;
+      line-height: 1.7;
+      color: rgba(243, 240, 233, .88);
+      font-weight: 300
+    }
+
+    .review__who {
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      margin-top: auto;
+      padding-top: var(--s-2);
+      border-top: 1px solid var(--line-soft)
+    }
+
+    .avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--surface-2);
+      border: 1px solid var(--line);
+      display: grid;
+      place-items: center;
+      font-weight: 600;
+      font-size: .85rem;
+      color: var(--accent);
+      flex: none
+    }
+
+    .review__who b {
+      font-size: .88rem;
+      font-weight: 600;
+      display: block
+    }
+
+    .review__who span {
+      font-size: .72rem;
+      color: var(--muted-dim)
+    }
+
+    /* ============================================================
+   Location + contact
+   ============================================================ */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: start
+    }
+
+    .info-card {
+      border: 1px solid var(--line-soft);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: var(--surface)
+    }
+
+    .map-plate {
+      position: relative;
+      height: 230px;
+      background:
+        repeating-linear-gradient(0deg, transparent 0 31px, rgba(243, 240, 233, .055) 31px 32px),
+        repeating-linear-gradient(90deg, transparent 0 31px, rgba(243, 240, 233, .055) 31px 32px),
+        radial-gradient(circle at 62% 42%, rgba(255, 154, 31, .16), transparent 58%), var(--bg-alt);
+      display: grid;
+      place-items: center;
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    .map-plate__road {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 56%;
+      height: 12px;
+      background: rgba(243, 240, 233, .06);
+      transform: rotate(-7deg)
+    }
+
+    .map-plate__road2 {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 38%;
+      width: 10px;
+      background: rgba(243, 240, 233, .05)
+    }
+
+    .pin {
+      position: relative;
+      display: grid;
+      place-items: center;
+      gap: .55rem;
+      text-align: center;
+      z-index: 2
+    }
+
+    .pin__dot {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 7px rgba(255, 154, 31, .18), 0 0 0 15px rgba(255, 154, 31, .09)
+    }
+
+    .pin span {
+      font-size: .65rem;
+      letter-spacing: .17em;
+      text-transform: uppercase;
+      color: var(--text);
+      background: rgba(11, 10, 9, .75);
+      padding: .3rem .6rem;
+      border-radius: 3px;
+      border: 1px solid var(--line)
+    }
+
+    .info-card__body {
+      padding: var(--s-4);
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-3)
+    }
+
+    .info-row {
+      display: flex;
+      gap: .9rem;
+      align-items: flex-start
+    }
+
+    .info-row svg {
+      flex: none;
+      margin-top: .22rem;
+      color: var(--accent)
+    }
+
+    .info-row h4 {
+      font-family: var(--sans);
+      font-size: .7rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted-dim);
+      font-weight: 600
+    }
+
+    .info-row p,
+    .info-row a {
+      font-size: .94rem;
+      line-height: 1.6;
+      color: rgba(243, 240, 233, .9);
+      font-weight: 300;
+      margin-top: .22rem;
+      display: block
+    }
+
+    .info-row a:hover {
+      color: var(--accent)
+    }
+
+    .info-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+      padding-top: var(--s-1)
+    }
+
+    .form {
+      border: 1px solid var(--line-soft);
+      border-radius: var(--radius-md);
+      background: var(--surface);
+      padding: clamp(1.5rem, 3vw, 2.5rem)
+    }
+
+    .form__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: var(--s-3)
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: .4rem
+    }
+
+    .field--full {
+      grid-column: 1/-1
+    }
+
+    .field label {
+      font-size: .68rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      background: var(--bg-alt);
+      border: 1px solid var(--line-soft);
+      border-radius: var(--radius-sm);
+      padding: .85rem .95rem;
+      color: var(--text);
+      font-size: .92rem;
+      font-weight: 300;
+      width: 100%;
+      transition: border-color .25s, background .25s;
+    }
+
+    .field textarea {
+      resize: vertical;
+      min-height: 104px
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--accent);
+      background: var(--bg);
+      outline: none
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: var(--muted-dim)
+    }
+
+    .field select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239C958A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right .95rem center;
+      padding-right: 2.3rem
+    }
+
+    .field__err {
+      font-size: .72rem;
+      color: #FF7A6E;
+      min-height: 0;
+      display: none
+    }
+
+    .field.is-invalid input,
+    .field.is-invalid select {
+      border-color: #FF7A6E
+    }
+
+    .field.is-invalid .field__err {
+      display: block
+    }
+
+    .form__foot {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--s-2);
+      margin-top: var(--s-3)
+    }
+
+    .form__note {
+      font-size: .74rem;
+      color: var(--muted-dim);
+      font-weight: 300;
+      max-width: 34ch;
+      line-height: 1.5
+    }
+
+    /* ============================================================
+   Footer
+   ============================================================ */
+    .footer {
+      border-top: 1px solid var(--line-soft);
+      background: var(--bg-alt);
+      padding-block: var(--s-6) var(--s-4)
+    }
+
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
+      gap: var(--s-4)
+    }
+
+    .footer__tag {
+      font-family: var(--display);
+      text-transform: uppercase;
+      font-size: 1.5rem;
+      margin-top: var(--s-3);
+      line-height: 1.05;
+      max-width: 16ch
+    }
+
+    .footer h4 {
+      font-family: var(--sans);
+      font-size: .68rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--muted-dim);
+      font-weight: 600;
+      margin-bottom: var(--s-2)
+    }
+
+    .footer li,
+    .footer p {
+      font-size: .88rem;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.85
+    }
+
+    .footer a:hover {
+      color: var(--accent)
+    }
+
+    .socials {
+      display: flex;
+      gap: .5rem;
+      margin-top: var(--s-2)
+    }
+
+    .socials a {
+      width: 38px;
+      height: 38px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+      transition: border-color .25s, color .25s
+    }
+
+    .socials a:hover {
+      border-color: var(--accent);
+      color: var(--accent)
+    }
+
+    .footer__bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--s-2);
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--line-soft);
+      margin-top: var(--s-5);
+      padding-top: var(--s-3);
+      font-size: .74rem;
+      color: var(--muted-dim);
+    }
+
+    /* ============================================================
+   Floating WhatsApp
+   ============================================================ */
+    .wa {
+      position: fixed;
+      right: clamp(1rem, 3vw, 1.75rem);
+      bottom: clamp(1rem, 3vw, 1.75rem);
+      z-index: 96;
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      height: 52px;
+      padding: 0 1.05rem;
+      background: var(--surface-2);
+      border: 1px solid var(--line);
+      border-radius: 100px;
+      color: var(--text);
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+      box-shadow: 0 12px 34px rgba(0, 0, 0, .5);
+      transition: transform .3s var(--ease), border-color .3s, background .3s;
+    }
+
+    .wa:hover {
+      transform: translateY(-3px);
+      border-color: rgba(37, 211, 102, .55);
+      background: #1C2A20
+    }
+
+    .wa svg {
+      color: #25D366;
+      flex: none
+    }
+
+    /* ============================================================
+   Modal
+   ============================================================ */
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 130;
+      display: grid;
+      place-items: center;
+      padding: var(--gutter);
+      background: rgba(6, 5, 5, .82);
+      backdrop-filter: blur(8px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .3s var(--ease), visibility .3s;
+    }
+
+    .modal.is-open {
+      opacity: 1;
+      visibility: visible
+    }
+
+    .modal__panel {
+      width: 100%;
+      max-width: 560px;
+      max-height: 88vh;
+      overflow-y: auto;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: clamp(1.5rem, 3vw, 2.3rem);
+      transform: translateY(16px) scale(.985);
+      transition: transform .35s var(--ease);
+    }
+
+    .modal.is-open .modal__panel {
+      transform: none
+    }
+
+    .modal__head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: var(--s-3)
+    }
+
+    .modal__head h3 {
+      font-family: var(--display);
+      text-transform: uppercase;
+      font-size: 1.35rem
+    }
+
+    .modal__head p {
+      font-size: .82rem;
+      color: var(--muted);
+      font-weight: 300;
+      margin-top: .35rem
+    }
+
+    .modal__close {
+      width: 38px;
+      height: 38px;
+      flex: none;
+      border: 1px solid var(--line);
+      background: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      color: var(--muted);
+      display: grid;
+      place-items: center;
+      transition: color .2s, border-color .2s
+    }
+
+    .modal__close:hover {
+      color: var(--text);
+      border-color: var(--text)
+    }
+
+    .stepper {
+      display: flex;
+      gap: .4rem;
+      margin-bottom: var(--s-3)
+    }
+
+    .stepper i {
+      flex: 1;
+      height: 2px;
+      background: var(--line);
+      border-radius: 2px;
+      transition: background .35s
+    }
+
+    .stepper i.done {
+      background: var(--accent)
+    }
+
+    .step-label {
+      font-size: .68rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--muted-dim);
+      margin-bottom: var(--s-2)
+    }
+
+    .pane {
+      display: none;
+      animation: fadeIn .35s var(--ease)
+    }
+
+    .pane.is-active {
+      display: block
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px)
+      }
+
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    .chips {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(88px, 1fr));
+      gap: .55rem
+    }
+
+    .chip {
+      border: 1px solid var(--line-soft);
+      background: var(--bg-alt);
+      border-radius: var(--radius-sm);
+      padding: .7rem .4rem;
+      cursor: pointer;
+      text-align: center;
+      transition: border-color .2s, background .2s, color .2s;
+    }
+
+    .chip b {
+      display: block;
+      font-size: 1.05rem;
+      font-weight: 600
+    }
+
+    .chip span {
+      display: block;
+      font-size: .64rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: .15rem
+    }
+
+    .chip:hover {
+      border-color: rgba(243, 240, 233, .3)
+    }
+
+    .chip.is-sel {
+      border-color: var(--accent);
+      background: rgba(255, 154, 31, .11)
+    }
+
+    .chip.is-sel b,
+    .chip.is-sel span {
+      color: var(--accent)
+    }
+
+    .modal__actions {
+      display: flex;
+      gap: .6rem;
+      margin-top: var(--s-4)
+    }
+
+    .summary {
+      border: 1px solid var(--line-soft);
+      border-radius: var(--radius-sm);
+      padding: var(--s-3);
+      background: var(--bg-alt);
+      display: flex;
+      flex-direction: column;
+      gap: .6rem;
+      margin-top: var(--s-2)
+    }
+
+    .summary div {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: .88rem
+    }
+
+    .summary dt {
+      color: var(--muted);
+      font-weight: 300
+    }
+
+    .summary dd {
+      margin: 0;
+      font-weight: 600;
+      text-align: right
+    }
+
+    .done-mark {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: rgba(255, 154, 31, .13);
+      border: 1px solid rgba(255, 154, 31, .4);
+      display: grid;
+      place-items: center;
+      color: var(--accent);
+      margin-bottom: var(--s-3)
+    }
+
+    /* lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 140;
+      background: rgba(6, 5, 5, .95);
+      display: grid;
+      place-items: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .3s
+    }
+
+    .lightbox.is-open {
+      opacity: 1;
+      visibility: visible
+    }
+
+    .lightbox img {
+      max-width: min(1100px, 92vw);
+      max-height: 82vh;
+      object-fit: contain;
+      border-radius: var(--radius-sm)
+    }
+
+    .lightbox__cap {
+      position: absolute;
+      bottom: clamp(1rem, 4vh, 2.5rem);
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: .72rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--muted)
+    }
+
+    .lb-btn {
+      position: absolute;
+      width: 48px;
+      height: 48px;
+      border: 1px solid var(--line);
+      background: rgba(11, 10, 9, .6);
+      color: var(--text);
+      border-radius: 50%;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: background .25s, border-color .25s
+    }
+
+    .lb-btn:hover {
+      background: var(--surface-2);
+      border-color: var(--text)
+    }
+
+    .lb-close {
+      top: clamp(1rem, 4vh, 2rem);
+      right: clamp(1rem, 4vw, 2rem)
+    }
+
+    .lb-prev {
+      left: clamp(.6rem, 3vw, 2rem);
+      top: 50%;
+      transform: translateY(-50%)
+    }
+
+    .lb-next {
+      right: clamp(.6rem, 3vw, 2rem);
+      top: 50%;
+      transform: translateY(-50%)
+    }
+
+    /* toast */
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 2rem;
+      transform: translate(-50%, 140%);
+      z-index: 150;
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      max-width: min(440px, 92vw);
+      background: var(--surface-2);
+      border: 1px solid rgba(255, 154, 31, .45);
+      border-radius: var(--radius-md);
+      padding: .95rem 1.2rem;
+      box-shadow: 0 18px 44px rgba(0, 0, 0, .6);
+      transition: transform .5s var(--ease);
+    }
+
+    .toast.is-on {
+      transform: translate(-50%, 0)
+    }
+
+    .toast svg {
+      color: var(--accent);
+      flex: none
+    }
+
+    .toast b {
+      display: block;
+      font-size: .9rem
+    }
+
+    .toast span {
+      display: block;
+      font-size: .78rem;
+      color: var(--muted);
+      font-weight: 300
+    }
+
+    /* ============================================================
+   Reveal on scroll
+   ============================================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity .75s var(--ease), transform .75s var(--ease)
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: none
+    }
+
+    .reveal[data-d="1"] {
+      transition-delay: .08s
+    }
+
+    .reveal[data-d="2"] {
+      transition-delay: .16s
+    }
+
+    .reveal[data-d="3"] {
+      transition-delay: .24s
+    }
+
+    .reveal[data-d="4"] {
+      transition-delay: .32s
+    }
+
+    /* image fallback if a remote photo fails */
+    .img-fail {
+      background: linear-gradient(135deg, var(--surface-2), var(--bg-alt));
+      position: relative;
+    }
+
+    .img-fail::after {
+      content: attr(data-fallback);
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-size: .64rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted-dim);
+      text-align: center;
+      padding: 1rem;
+    }
+
+    /* ============================================================
+   Responsive
+   ============================================================ */
+    @media (max-width:1100px) {
+      .nav__links {
+        display: none
+      }
+
+      .nav__actions .btn {
+        display: none
+      }
+
+      .burger {
+        display: block
+      }
+
+      .trainers {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .footer__grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .steps {
+        grid-template-columns: repeat(2, 1fr)
+      }
+    }
+
+    @media (max-width:900px) {
+      .about {
+        grid-template-columns: 1fr;
+        gap: var(--s-5)
+      }
+
+      .about__media {
+        order: -1
+      }
+
+      .about__badge {
+        right: 12px;
+        bottom: -16px
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr
+      }
+
+      .plans {
+        grid-template-columns: 1fr
+      }
+
+      .plan--featured {
+        order: -1
+      }
+
+      .reviews {
+        grid-template-columns: 1fr
+      }
+
+      .fac-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .fac,
+      .fac:nth-child(1),
+      .fac:nth-child(2) {
+        grid-column: span 1;
+        min-height: 270px
+      }
+
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 135px
+      }
+
+      .hero__rating {
+        text-align: left
+      }
+    }
+
+    @media (max-width:640px) {
+      html {
+        scroll-padding-top: 74px
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .stat {
+        border-right: 0
+      }
+
+      .stat:nth-child(odd) {
+        border-right: 1px solid var(--line-soft)
+      }
+
+      .form__grid {
+        grid-template-columns: 1fr
+      }
+
+      .steps {
+        grid-template-columns: 1fr
+      }
+
+      .footer__grid {
+        grid-template-columns: 1fr;
+        gap: var(--s-4)
+      }
+
+      .hero__bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--s-3)
+      }
+
+      .hero__ctas .btn {
+        flex: 1 1 100%
+      }
+
+      .scroll-hint {
+        display: none
+      }
+
+      .wa span {
+        display: none
+      }
+
+      .wa {
+        padding: 0;
+        width: 52px;
+        justify-content: center
+      }
+
+      .modal__actions {
+        flex-direction: column-reverse
+      }
+
+      .modal__actions .btn {
+        width: 100%
+      }
+
+      .shot--w2 {
+        grid-column: span 2
+      }
+
+      .about__badge {
+        position: static;
+        margin-top: var(--s-2);
+        max-width: none
+      }
+    }
+
+    @media (max-width:380px) {
+      :root {
+        --gutter: 1.05rem
+      }
+
+      .fac-grid {
+        grid-template-columns: 1fr
+      }
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+      html {
+        scroll-behavior: auto
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .001ms !important
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none
+      }
+
+      .hero h1 .line i {
+        transform: none
+      }
+
+      .hero__fade {
+        opacity: 1;
+        transform: none
+      }
+
+      .strip__track {
+        animation: none
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="progress" aria-hidden="true">
+    <div class="progress__bar" id="progressBar"></div>
+  </div>
+
+  <!-- ========================= NAV ========================= -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="#home" class="logo" aria-label="Gym Flex, home">
+        <span class="logo__mark" aria-hidden="true">F</span>
+        <span>Gym Flex<span class="logo__sub">Citylight · Surat</span></span>
+      </a>
+
+      <nav class="nav__links" aria-label="Main">
+        <a class="nav__link" href="#home">Home</a>
+        <a class="nav__link" href="#about">About</a>
+        <a class="nav__link" href="#facilities">Facilities</a>
+        <a class="nav__link" href="#trainers">Trainers</a>
+        <a class="nav__link" href="#membership">Membership</a>
+        <a class="nav__link" href="#gallery">Gallery</a>
+        <a class="nav__link" href="#reviews">Reviews</a>
+        <a class="nav__link" href="#contact">Contact</a>
+      </nav>
+
+      <div class="nav__actions">
+        <button class="btn btn--sm" data-open-booking>Start your journey</button>
+        <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <nav class="mobile-menu__list" aria-label="Mobile">
+      <a class="mobile-menu__link" href="#about">About <span>01</span></a>
+      <a class="mobile-menu__link" href="#facilities">Facilities <span>02</span></a>
+      <a class="mobile-menu__link" href="#trainers">Trainers <span>03</span></a>
+      <a class="mobile-menu__link" href="#membership">Membership <span>04</span></a>
+      <a class="mobile-menu__link" href="#gallery">Gallery <span>05</span></a>
+      <a class="mobile-menu__link" href="#reviews">Reviews <span>06</span></a>
+      <a class="mobile-menu__link" href="#contact">Contact <span>07</span></a>
+    </nav>
+    <div class="mobile-menu__foot">
+      <button class="btn btn--block" data-open-booking>Book a free trial</button>
+      <p class="mobile-menu__meta">
+        3rd Floor, V3 Corner, Honey Park Road, Adajan, Surat<br>
+        <a href="tel:+919327170936">093271 70936</a>
+      </p>
+    </div>
+  </div>
+
+  <main id="main">
+
+    <!-- ========================= HERO ========================= -->
+    <section class="hero" id="home">
+      <div class="hero__media">
+        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=2000&q=70"
+          alt="Athlete training with free weights in a dimly lit gym" fetchpriority="high" data-fallback="Gym photo">
+      </div>
+      <div class="hero__scrim" aria-hidden="true"></div>
+
+      <div class="container hero__inner">
+        <span class="hero__loc hero__fade"><i aria-hidden="true"></i> Adajan, Surat · Open 6 AM – 10 PM</span>
+
+        <h1>
+          <span class="line"><i>Train hard.</i></span>
+          <span class="line"><i class="hero__outline">Live strong.</i></span>
+        </h1>
+
+        <div class="hero__bottom">
+          <div>
+            <p class="hero__copy hero__fade hero__fade--d1">
+              A serious strength and conditioning floor on Honey Park Road — proper equipment,
+              room to move, and coaches who actually watch your form.
+            </p>
+            <div class="hero__ctas hero__fade hero__fade--d2">
+              <button class="btn" data-open-booking>
+                Book a free trial
+                <svg class="btn__arrow" width="15" height="10" viewBox="0 0 15 10" fill="none" aria-hidden="true">
+                  <path d="M1 5h12M9 1l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </button>
+              <a class="btn btn--ghost" href="#facilities">Explore the gym</a>
+            </div>
+          </div>
+
+          <div class="hero__rating hero__fade hero__fade--d2">
+            <strong>4.6<span class="accent">★</span></strong>
+            <span>≈500 ratings across listings</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="scroll-hint" aria-hidden="true"><i></i> Scroll</div>
+    </section>
+
+    <!-- ========================= TRUST ========================= -->
+    <section class="strip" aria-label="Highlights">
+      <div class="strip__track" id="marquee">
+        <span>Strength floor</span><span>Cardio zone</span><span>Functional training</span>
+        <span>Personal coaching</span><span>Group classes</span><span>Open 6 AM – 10 PM</span>
+        <span>Honey Park Road, Adajan</span>
+      </div>
+    </section>
+
+    <section class="section--alt" aria-label="Reputation">
+      <div class="container">
+        <div class="stats">
+          <div class="stat reveal">
+            <div class="stat__num"><span data-count="498">0</span><sup>+</sup></div>
+            <div class="stat__label">Ratings online</div>
+            <p class="stat__note">Across public directories</p>
+          </div>
+          <div class="stat reveal" data-d="1">
+            <div class="stat__num"><span data-count="4.6" data-dec="1">0</span><sup>★</sup></div>
+            <div class="stat__label">Average rating</div>
+            <p class="stat__note">Publicly listed average</p>
+          </div>
+          <div class="stat reveal" data-d="2">
+            <div class="stat__num"><span data-count="5">0</span><sup>+</sup></div>
+            <div class="stat__label">Years in Adajan</div>
+            <p class="stat__note">Listed since 2019</p>
+          </div>
+          <div class="stat reveal" data-d="3">
+            <div class="stat__num"><span data-count="16">0</span><sup>h</sup></div>
+            <div class="stat__label">Open daily</div>
+            <p class="stat__note">6 AM to 10 PM</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= ABOUT ========================= -->
+    <section class="section" id="about">
+      <div class="container about">
+        <div class="about__body">
+          <span class="eyebrow reveal">About Gym Flex</span>
+          <h2 class="h2 reveal" data-d="1">More than a gym.<br>A floor built for progress.</h2>
+          <p class="lead reveal" data-d="2">
+            Gym Flex sits on the upper floor of V3 Corner, a few steps from L.P. Savani School.
+            Members consistently describe it the same way in public reviews: spacious, well kept,
+            and stocked with equipment you can actually train on — not a crowded room where you
+            queue for a bench.
+          </p>
+
+          <div class="about__points">
+            <div class="about__point reveal" data-d="2">
+              <b>01</b>
+              <div>
+                <h4>Space to train properly</h4>
+                <p>Room for compound lifts, warm-ups and stretching without working around someone else's set.</p>
+              </div>
+            </div>
+            <div class="about__point reveal" data-d="3">
+              <b>02</b>
+              <div>
+                <h4>Equipment that holds up</h4>
+                <p>Free weights, plate-loaded machines and cardio maintained well enough that reviewers mention it by
+                  name.</p>
+              </div>
+            </div>
+            <div class="about__point reveal" data-d="4">
+              <b>03</b>
+              <div>
+                <h4>Timings that fit your day</h4>
+                <p>Doors open from 6 AM through 10 PM, so early shifts and late finishes both work.</p>
+              </div>
+            </div>
+          </div>
+
+          <a class="btn btn--ghost reveal" data-d="4" href="#facilities">See the facilities</a>
+        </div>
+
+        <div class="about__media reveal" data-d="1">
+          <img loading="lazy"
+            src="https://images.unsplash.com/photo-1558611848-73f7eb4001a1?auto=format&fit=crop&w=1100&q=70"
+            alt="Rack of dumbbells arranged along a gym wall" data-fallback="Gym interior">
+          <div class="about__badge">
+            <strong>6 AM<br>– 10 PM</strong>
+            <span>Open every day</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= FACILITIES ========================= -->
+    <section class="section section--alt" id="facilities">
+      <div class="container">
+        <div class="facilities__head">
+          <div class="section-head" style="margin-bottom:0">
+            <span class="eyebrow reveal">Facilities</span>
+            <h2 class="h2 reveal" data-d="1">Everything you need<br>under one roof.</h2>
+          </div>
+          <p class="lead reveal" data-d="2" style="max-width:34ch;font-size:.92rem">
+            Training zones shown for the concept. Final list to be confirmed with the owner.
+          </p>
+        </div>
+
+        <div class="fac-grid">
+          <article class="fac reveal">
+            <img loading="lazy"
+              src="https://images.unsplash.com/photo-1534368959876-26bf04f2c947?auto=format&fit=crop&w=1100&q=70"
+              alt="Loaded barbell resting on a rack" data-fallback="Strength">
+            <span class="fac__no">01</span>
+            <h3>Strength &amp; free weights</h3>
+            <p>Barbells, racks, benches and a full dumbbell range for the lifts that build real strength.</p>
+            <ul class="fac__tags">
+              <li>Racks</li>
+              <li>Benches</li>
+              <li>Dumbbells</li>
+            </ul>
+          </article>
+
+          <article class="fac reveal" data-d="1">
+            <img loading="lazy"
+              src="https://images.unsplash.com/photo-1534258936925-c58bed479fcb?auto=format&fit=crop&w=1100&q=70"
+              alt="Row of treadmills in a modern gym" data-fallback="Cardio">
+            <span class="fac__no">02</span>
+            <h3>Cardio floor</h3>
+            <p>Treadmills, cycles and cross-trainers for conditioning, warm-ups and fat-loss work.</p>
+            <ul class="fac__tags">
+              <li>Treadmill</li>
+              <li>Cycle</li>
+              <li>Cross-trainer</li>
+            </ul>
+          </article>
+
+          <article class="fac reveal" data-d="2">
+            <img loading="lazy"
+              src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=900&q=70"
+              alt="Kettlebells and functional training equipment" data-fallback="Functional">
+            <span class="fac__no">03</span>
+            <h3>Functional zone</h3>
+            <p>Kettlebells, ropes and open floor for mobility and athletic conditioning.</p>
+          </article>
+
+          <article class="fac reveal" data-d="3">
+            <img loading="lazy"
+              src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&q=70"
+              alt="Coach guiding a member through an exercise" data-fallback="Coaching">
+            <span class="fac__no">04</span>
+            <h3>Personal coaching</h3>
+            <p>One-to-one programming, form correction and progress tracking.</p>
+          </article>
+
+          <article class="fac reveal" data-d="4">
+            <img loading="lazy"
+              src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=900&q=70"
+              alt="Group fitness class in session" data-fallback="Group classes">
+            <span class="fac__no">05</span>
+            <h3>Group classes</h3>
+            <p>Scheduled sessions that keep training social and consistent.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= TRAINERS ========================= -->
+    <section class="section" id="trainers">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow reveal">The floor team</span>
+          <h2 class="h2 reveal" data-d="1">Coaches who watch<br>your every rep.</h2>
+          <p class="lead reveal" data-d="2">
+            Sample profiles showing how the real Gym Flex team would appear once photos
+            and details are supplied.
+          </p>
+        </div>
+
+        <div class="trainers">
+          <article class="trainer reveal">
+            <div class="trainer__img">
+              <img loading="lazy"
+                src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?auto=format&fit=crop&w=800&q=70"
+                alt="Portrait of a strength coach" data-fallback="Coach photo">
+              <span class="trainer__tag">Sample profile</span>
+            </div>
+            <div class="trainer__body">
+              <h3>Coach — Strength</h3>
+              <div class="trainer__role">Powerlifting &amp; hypertrophy</div>
+              <p class="trainer__bio">Placeholder bio. Replace with the coach's name, certifications and training focus.
+              </p>
+            </div>
+          </article>
+
+          <article class="trainer reveal" data-d="1">
+            <div class="trainer__img">
+              <img loading="lazy"
+                src="https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=800&q=70"
+                alt="Portrait of a fitness trainer" data-fallback="Coach photo">
+              <span class="trainer__tag">Sample profile</span>
+            </div>
+            <div class="trainer__body">
+              <h3>Coach — Conditioning</h3>
+              <div class="trainer__role">Fat loss &amp; endurance</div>
+              <p class="trainer__bio">Placeholder bio. Replace with the coach's name, certifications and training focus.
+              </p>
+            </div>
+          </article>
+
+          <article class="trainer reveal" data-d="2">
+            <div class="trainer__img">
+              <img loading="lazy"
+                src="https://images.unsplash.com/photo-1583468982228-19f19164aee2?auto=format&fit=crop&w=800&q=70"
+                alt="Portrait of an athletic trainer" data-fallback="Coach photo">
+              <span class="trainer__tag">Sample profile</span>
+            </div>
+            <div class="trainer__body">
+              <h3>Coach — Functional</h3>
+              <div class="trainer__role">Mobility &amp; athletic prep</div>
+              <p class="trainer__bio">Placeholder bio. Replace with the coach's name, certifications and training focus.
+              </p>
+            </div>
+          </article>
+
+          <article class="trainer reveal" data-d="3">
+            <div class="trainer__img">
+              <img loading="lazy"
+                src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=800&q=70"
+                alt="Portrait of a personal trainer in a gym" data-fallback="Coach photo">
+              <span class="trainer__tag">Sample profile</span>
+            </div>
+            <div class="trainer__body">
+              <h3>Coach — Beginners</h3>
+              <div class="trainer__role">First 90 days</div>
+              <p class="trainer__bio">Placeholder bio. Replace with the coach's name, certifications and training focus.
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <p class="notice reveal">
+          <b>Note for the concept:</b> these are stock photographs and placeholder roles, not real Gym Flex staff.
+          Send across the team's names, photos and specialities and they'll drop straight into this layout.
+        </p>
+      </div>
+    </section>
+
+    <!-- ========================= MEMBERSHIP ========================= -->
+    <section class="section section--alt" id="membership">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow reveal">Membership</span>
+          <h2 class="h2 reveal" data-d="1">Pick a plan,<br>start this week.</h2>
+          <p class="lead reveal" data-d="2">
+            Example structure only. The amounts below are placeholders so you can see how
+            real Gym Flex pricing would sit in the layout.
+          </p>
+        </div>
+
+        <div class="plans">
+          <article class="plan reveal">
+            <div>
+              <div class="plan__name">Starter</div>
+              <div class="plan__price" style="margin-top:.8rem"><b>₹—</b><span>/ month</span></div>
+            </div>
+            <p class="plan__desc">Full floor access during regular hours. Good for a first month.</p>
+            <ul class="plan__list">
+              <li><svg width="13" height="10" viewBox="0 0 13 10" fill="none" aria-hidden="true">
+                  <path d="M1 5l4 4 7-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg> Strength and cardio floor</li>
+              <li><svg width="13" height="10" viewBox="0 0 13 10" fill="none" aria-hidden="true">
+                  <path d="M1 5l4 4 7-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg> Locker and changing room</li>
+              <li><svg width="13" height="10" viewBox="0 0 13 10" fill="none" aria-hidden="true">
+                  <path d="M1 5l4 4 7-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg> One induction session</li>
+              <li class="off"><svg width="13" height="10" viewBox="0 0 13 10" fill="none" aria-hidden="true">
+                  <path d="M1 1l10 8M11 1L1 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                </svg> Group classes</li>
+              <li class="off"><svg width="13" height="10" viewBox="0 0 13 10" fill="none" aria-hidden="true">
+                  <path d="M1 1l10 8M11 1L1 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                </svg> Personal coaching</li>
+            </ul>
+            <button class="btn btn--ghost btn--block" data-plan="Starter">Enquire about Starter</button>
+          </article>
+
+          <article class="plan plan--featured reveal" data-d="1">
+            <div>
+              <div class="plan__name">Pro</div>
+              <div class="plan__price" style="margin-top:.8rem"><b>₹—</b><span>/ month</span></div>
+            </div>
+            <p class="plan__desc">Everything in Starter plus scheduled classes and a written programme.</p>
+            <ul class="plan__list">
+              <li><svg width="13" height="10" viewBox="0 0 13 10" fill="none" aria-hidden="true">
+                  <path d="M1 5l4 4 7-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg> Everything in Starter</li>
+              <li><svg width="13" height="10" viewBox="0 0 13 10" fill="none" aria-hidden="true">
+                  <path d="M1 5l4 4 7-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg> All group classes</li>
+              <li><svg width="13" height="10" viewBox="0 0 13 10" fill="none" aria-hidden="true">
+                  <path d="M1 5l4 4 7-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg> Personalised workout plan</li>
+              <li><svg width="13" height="10" viewBox="0 0 13 10" fill="none" aria-hidden="true">
+                  <path d="M1 5l4 4 7-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg> Monthly progress check</li>
+              <li class="off"><svg width="13" height="10" viewBox="0 0 13 10" fill="none" aria-hidden="true">
+                  <path d="M1 1l10 8M11 1L1 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                </svg> One-to-one coaching hours</li>
+            </ul>
+            <button class="btn btn--block" data-plan="Pro">Enquire about Pro</button>
+          </article>
+
+          <article class="plan reveal" data-d="2">
+            <div>
+              <div class="plan__name">Elite</div>
+              <div class="plan__price" style="margin-top:.8rem"><b>₹—</b><span>/ month</span></div>
+            </div>
+            <p class="plan__desc">Coached training with regular one-to-one time on the floor.</p>
+            <ul class="plan__list">
+              <li><svg width="13" height="10" viewBox="0 0 13 10" fill="none" aria-hidden="true">
+                  <path d="M1 5l4 4 7-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg> Everything in Pro</li>
+              <li><svg width="13" height="10" viewBox="0 0 13 10" fill="none" aria-hidden="true">
+                  <path d="M1 5l4 4 7-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg> Weekly one-to-one sessions</li>
+              <li><svg width="13" height="10" viewBox="0 0 13 10" fill="none" aria-hidden="true">
+                  <path d="M1 5l4 4 7-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg> Diet and recovery guidance</li>
+              <li><svg width="13" height="10" viewBox="0 0 13 10" fill="none" aria-hidden="true">
+                  <path d="M1 5l4 4 7-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg> Priority class booking</li>
+              <li><svg width="13" height="10" viewBox="0 0 13 10" fill="none" aria-hidden="true">
+                  <path d="M1 5l4 4 7-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg> Guest passes</li>
+            </ul>
+            <button class="btn btn--ghost btn--block" data-plan="Elite">Enquire about Elite</button>
+          </article>
+        </div>
+
+        <p class="notice reveal">
+          <b>Placeholder pricing.</b> Plans, inclusions and amounts are shown to demonstrate the layout —
+          they are not Gym Flex's actual membership rates.
+        </p>
+      </div>
+    </section>
+
+    <!-- ========================= TRANSFORMATION ========================= -->
+    <section class="section transform">
+      <div class="transform__bg" aria-hidden="true">
+        <img loading="lazy"
+          src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=1800&q=70" alt=""
+          data-fallback="">
+      </div>
+      <div class="container">
+        <div class="transform__inner">
+          <span class="eyebrow reveal">How it starts</span>
+          <h2 class="h2 reveal" data-d="1" style="margin-top:.5rem">Your transformation<br>starts on day one.</h2>
+          <p class="lead reveal" data-d="2" style="margin-top:1.2rem">
+            Nobody walks in already knowing what to do. Here's how a first month at Gym Flex
+            is designed to go.
+          </p>
+        </div>
+
+        <ol class="steps">
+          <li class="step reveal"><b>Step 1</b>
+            <h4>Free trial session</h4>
+            <p>Walk the floor, try the equipment, ask anything. No commitment.</p>
+          </li>
+          <li class="step reveal" data-d="1"><b>Step 2</b>
+            <h4>Goal and fitness check</h4>
+            <p>A short assessment so training starts from where you actually are.</p>
+          </li>
+          <li class="step reveal" data-d="2"><b>Step 3</b>
+            <h4>Your programme</h4>
+            <p>A written plan for the week, matched to your schedule and experience.</p>
+          </li>
+          <li class="step reveal" data-d="3"><b>Step 4</b>
+            <h4>Track and adjust</h4>
+            <p>Regular check-ins so the plan moves as fast as you do.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ========================= GALLERY ========================= -->
+    <section class="section" id="gallery">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow reveal">Gallery</span>
+          <h2 class="h2 reveal" data-d="1">Inside the floor.</h2>
+          <p class="lead reveal" data-d="2">
+            Stock photography standing in for real Gym Flex photos. Swapping in your own
+            images is a straight file replacement.
+          </p>
+        </div>
+
+        <div class="gallery">
+          <button class="shot shot--w2 shot--h2 reveal"
+            data-full="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1800&q=80"
+            data-cap="Training floor">
+            <img loading="lazy"
+              src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=70"
+              alt="Wide view of a gym training floor" data-fallback="Training floor">
+            <span class="shot__cap">Training floor</span>
+          </button>
+          <button class="shot reveal" data-d="1"
+            data-full="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=1600&q=80"
+            data-cap="Free weights">
+            <img loading="lazy"
+              src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=700&q=70"
+              alt="Dumbbells on a rack" data-fallback="Free weights">
+            <span class="shot__cap">Free weights</span>
+          </button>
+          <button class="shot reveal" data-d="2"
+            data-full="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1600&q=80"
+            data-cap="Bench work">
+            <img loading="lazy"
+              src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=700&q=70"
+              alt="Member training on a bench" data-fallback="Bench work">
+            <span class="shot__cap">Bench work</span>
+          </button>
+          <button class="shot shot--w2 reveal" data-d="1"
+            data-full="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=1800&q=80"
+            data-cap="Cardio zone">
+            <img loading="lazy"
+              src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=900&q=70"
+              alt="Cardio machines lined up in a gym" data-fallback="Cardio zone">
+            <span class="shot__cap">Cardio zone</span>
+          </button>
+          <button class="shot reveal" data-d="2"
+            data-full="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=1600&q=80"
+            data-cap="Conditioning">
+            <img loading="lazy"
+              src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=700&q=70"
+              alt="Athlete during a conditioning workout" data-fallback="Conditioning">
+            <span class="shot__cap">Conditioning</span>
+          </button>
+          <button class="shot reveal" data-d="3"
+            data-full="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=1600&q=80"
+            data-cap="Mobility &amp; stretch">
+            <img loading="lazy"
+              src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=700&q=70"
+              alt="Member stretching before training" data-fallback="Mobility">
+            <span class="shot__cap">Mobility &amp; stretch</span>
+          </button>
+          <button class="shot shot--w2 reveal" data-d="2"
+            data-full="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1800&q=80"
+            data-cap="Coaching">
+            <img loading="lazy"
+              src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=900&q=70"
+              alt="Trainer coaching a member through a lift" data-fallback="Coaching">
+            <span class="shot__cap">Coaching</span>
+          </button>
+          <button class="shot shot--w2 reveal" data-d="3"
+            data-full="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=1800&q=80"
+            data-cap="Equipment detail">
+            <img loading="lazy"
+              src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=900&q=70"
+              alt="Close-up of weight plates" data-fallback="Equipment detail">
+            <span class="shot__cap">Equipment detail</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= REVIEWS ========================= -->
+    <section class="section section--alt" id="reviews">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow reveal">Reviews</span>
+          <h2 class="h2 reveal" data-d="1">What members say.</h2>
+          <p class="lead reveal" data-d="2">
+            Gym Flex holds a 4.6 average across roughly 500 public ratings. The cards below
+            are written placeholders that reflect the themes reviewers mention most —
+            real review text can be pulled in once it's approved.
+          </p>
+        </div>
+
+        <div class="reviews">
+          <article class="review reveal">
+            <div class="review__top">
+              <div class="stars" aria-label="5 out of 5">★★★★★</div>
+              <span class="review__src">Sample review</span>
+            </div>
+            <p>Plenty of space, so you're never waiting around for a bench. Easily the most comfortable gym I've trained
+              at in Adajan.</p>
+            <div class="review__who">
+              <span class="avatar" aria-hidden="true">A</span>
+              <div><b>Member — Adajan</b><span>Placeholder profile</span></div>
+            </div>
+          </article>
+
+          <article class="review reveal" data-d="1">
+            <div class="review__top">
+              <div class="stars" aria-label="5 out of 5">★★★★★</div>
+              <span class="review__src">Sample review</span>
+            </div>
+            <p>Equipment is well maintained and there's enough variety to keep a proper split going. Staff step in when
+              your form slips.</p>
+            <div class="review__who">
+              <span class="avatar" aria-hidden="true">R</span>
+              <div><b>Member — Pal</b><span>Placeholder profile</span></div>
+            </div>
+          </article>
+
+          <article class="review reveal" data-d="2">
+            <div class="review__top">
+              <div class="stars" aria-label="4 out of 5">★★★★☆</div>
+              <span class="review__src">Sample review</span>
+            </div>
+            <p>Timings work well for me — I can get in before work or late in the evening and it still doesn't feel
+              packed.</p>
+            <div class="review__who">
+              <span class="avatar" aria-hidden="true">S</span>
+              <div><b>Member — Honey Park</b><span>Placeholder profile</span></div>
+            </div>
+          </article>
+        </div>
+
+        <p class="notice reveal">
+          <b>Not real quotes.</b> These are written for the concept. On the live site they'd be replaced with
+          genuine Google reviews, quoted accurately and with the reviewer's name as it appears publicly.
+        </p>
+      </div>
+    </section>
+
+    <!-- ========================= CONTACT ========================= -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow reveal">Visit &amp; enquire</span>
+          <h2 class="h2 reveal" data-d="1">Come see the floor.</h2>
+        </div>
+
+        <div class="contact-grid">
+          <div class="info-card reveal">
+            <div class="map-plate" aria-hidden="true">
+              <div class="map-plate__road"></div>
+              <div class="map-plate__road2"></div>
+              <div class="pin"><span class="pin__dot"></span><span>Gym Flex · V3 Corner</span></div>
+            </div>
+            <div class="info-card__body">
+              <div class="info-row">
+                <svg width="16" height="18" viewBox="0 0 16 18" fill="none" aria-hidden="true">
+                  <path d="M8 17s6-5.2 6-9.6A6 6 0 002 7.4C2 11.8 8 17 8 17z" stroke="currentColor"
+                    stroke-width="1.5" />
+                  <circle cx="8" cy="7.4" r="2.2" stroke="currentColor" stroke-width="1.5" />
+                </svg>
+                <div>
+                  <h4>Address</h4>
+                  <p>3rd Floor, V3 Corner, Honey Park Road,<br>Near L.P. Savani School, Adajan,<br>Surat, Gujarat 395009
+                  </p>
+                </div>
+              </div>
+              <div class="info-row">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path
+                    d="M14.5 11.5v2a1.4 1.4 0 01-1.6 1.4A13.6 13.6 0 011.1 3.1 1.4 1.4 0 012.5 1.5h2a1.4 1.4 0 011.4 1.2c.1.7.3 1.4.5 2a1.4 1.4 0 01-.3 1.5l-.8.8a11 11 0 004.2 4.2l.8-.8a1.4 1.4 0 011.5-.3c.7.3 1.3.4 2 .5a1.4 1.4 0 011.2 1.4z"
+                    stroke="currentColor" stroke-width="1.4" />
+                </svg>
+                <div>
+                  <h4>Phone</h4><a href="tel:+919327170936">093271 70936</a>
+                </div>
+              </div>
+              <div class="info-row">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <circle cx="8" cy="8" r="6.6" stroke="currentColor" stroke-width="1.4" />
+                  <path d="M8 4.4V8l2.4 1.6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
+                </svg>
+                <div>
+                  <h4>Hours</h4>
+                  <p>Every day, 6:00 AM – 10:00 PM<br><span style="color:var(--muted-dim);font-size:.82rem">Please
+                      confirm timings before your first visit.</span></p>
+                </div>
+              </div>
+              <div class="info-actions">
+                <a class="btn btn--sm" target="_blank" rel="noopener"
+                  href="https://www.google.com/maps/dir/?api=1&destination=Gym+Flex+V3+Corner+Honey+Park+Road+Adajan+Surat+395009">Get
+                  directions</a>
+                <a class="btn btn--sm btn--ghost" href="tel:+919327170936">Call the gym</a>
+                <a class="btn btn--sm btn--ghost" target="_blank" rel="noopener"
+                  href="https://wa.me/919327170936?text=Hi%20Gym%20Flex%2C%20I%27d%20like%20to%20know%20more%20about%20membership.">WhatsApp</a>
+              </div>
+            </div>
+          </div>
+
+          <form class="form reveal" data-d="1" id="enquiryForm" novalidate>
+            <h3 class="h3">Request a free visit</h3>
+            <p class="lead" style="font-size:.9rem;margin-top:.6rem">Send your details and the team will get back with a
+              time that suits you.</p>
+
+            <div class="form__grid">
+              <div class="field">
+                <label for="f-name">Full name</label>
+                <input id="f-name" name="name" type="text" placeholder="Your name" autocomplete="name" required>
+                <span class="field__err">Please enter your name.</span>
+              </div>
+              <div class="field">
+                <label for="f-phone">Phone number</label>
+                <input id="f-phone" name="phone" type="tel" placeholder="10-digit mobile" autocomplete="tel"
+                  inputmode="numeric" required>
+                <span class="field__err">Please enter a valid 10-digit number.</span>
+              </div>
+              <div class="field">
+                <label for="f-email">Email <span
+                    style="text-transform:none;letter-spacing:0;color:var(--muted-dim)">(optional)</span></label>
+                <input id="f-email" name="email" type="email" placeholder="you@example.com" autocomplete="email">
+                <span class="field__err">Please check the email address.</span>
+              </div>
+              <div class="field">
+                <label for="f-interest">Interested in</label>
+                <select id="f-interest" name="interest">
+                  <option>Gym membership</option>
+                  <option>Personal training</option>
+                  <option>Group classes</option>
+                  <option>Free trial session</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="f-time">Preferred time</label>
+                <select id="f-time" name="time">
+                  <option>Early morning (6 – 9 AM)</option>
+                  <option>Late morning (9 AM – 12 PM)</option>
+                  <option>Evening (5 – 8 PM)</option>
+                  <option>Night (8 – 10 PM)</option>
+                </select>
+              </div>
+              <div class="field field--full">
+                <label for="f-msg">Message</label>
+                <textarea id="f-msg" name="message"
+                  placeholder="Anything you'd like to ask before visiting?"></textarea>
+              </div>
+            </div>
+
+            <div class="form__foot">
+              <button class="btn" type="submit">
+                Request a free visit
+                <svg class="btn__arrow" width="15" height="10" viewBox="0 0 15 10" fill="none" aria-hidden="true">
+                  <path d="M1 5h12M9 1l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </button>
+              <p class="form__note">Concept site — nothing is sent anywhere. The success message is a simulation.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================= FOOTER ========================= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <a href="#home" class="logo">
+            <span class="logo__mark" aria-hidden="true">F</span>
+            <span>Gym Flex<span class="logo__sub">Citylight · Surat</span></span>
+          </a>
+          <p class="footer__tag">Train harder.<br>Live stronger.</p>
+          <div class="socials">
+            <a href="https://www.facebook.com/GymFlexAdajan/" target="_blank" rel="noopener"
+              aria-label="Gym Flex on Facebook">
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M9.5 16V9h2.3l.4-2.7H9.5V4.6c0-.8.2-1.3 1.3-1.3h1.5V.9C12 .8 11.1.7 10.1.7 8 .7 6.6 2 6.6 4.3v2H4.3V9h2.3v7h2.9z" />
+              </svg>
+            </a>
+            <a href="https://wa.me/919327170936" target="_blank" rel="noopener" aria-label="Gym Flex on WhatsApp">
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M8 0a8 8 0 00-6.9 12L0 16l4.1-1.1A8 8 0 108 0zm4.7 11.3c-.2.6-1.1 1.1-1.6 1.1-.4 0-.9.2-3-.6-2.5-1-4.1-3.6-4.2-3.7-.1-.2-1-1.3-1-2.5s.6-1.7.9-2c.2-.2.5-.3.6-.3h.5c.1 0 .3 0 .5.4l.7 1.7c0 .1.1.2 0 .4l-.3.4-.3.3c-.1.1-.2.2-.1.4.1.2.6 1 1.3 1.6.9.8 1.6 1 1.8 1.1.2.1.3.1.4 0l.7-.8c.2-.2.3-.2.5-.1l1.6.8c.2.1.4.2.4.3.1.1.1.5-.1 1.1z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h4>Pages</h4>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#facilities">Facilities</a></li>
+            <li><a href="#trainers">Trainers</a></li>
+            <li><a href="#membership">Membership</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Hours</h4>
+          <ul>
+            <li>Monday – Sunday</li>
+            <li>6:00 AM – 10:00 PM</li>
+            <li style="color:var(--muted-dim);font-size:.8rem;line-height:1.6;margin-top:.6rem">Timings as publicly
+              listed. Please confirm with the gym.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Visit</h4>
+          <p>
+            3rd Floor, V3 Corner,<br>
+            Honey Park Road,<br>
+            Near L.P. Savani School,<br>
+            Adajan, Surat 395009
+          </p>
+          <p style="margin-top:.8rem"><a href="tel:+919327170936">093271 70936</a></p>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <span>© <span id="year">2026</span> Gym Flex, Adajan, Surat.</span>
+        <span>Concept / demo website — created for presentation purposes. Not the official Gym Flex site.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- floating whatsapp -->
+  <a class="wa" href="https://wa.me/919327170936?text=Hi%20Gym%20Flex%2C%20I%27d%20like%20to%20book%20a%20free%20trial."
+    target="_blank" rel="noopener" aria-label="Message Gym Flex on WhatsApp">
+    <svg width="21" height="21" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+      <path
+        d="M8 0a8 8 0 00-6.9 12L0 16l4.1-1.1A8 8 0 108 0zm4.7 11.3c-.2.6-1.1 1.1-1.6 1.1-.4 0-.9.2-3-.6-2.5-1-4.1-3.6-4.2-3.7-.1-.2-1-1.3-1-2.5s.6-1.7.9-2c.2-.2.5-.3.6-.3h.5c.1 0 .3 0 .5.4l.7 1.7c0 .1.1.2 0 .4l-.3.4-.3.3c-.1.1-.2.2-.1.4.1.2.6 1 1.3 1.6.9.8 1.6 1 1.8 1.1.2.1.3.1.4 0l.7-.8c.2-.2.3-.2.5-.1l1.6.8c.2.1.4.2.4.3.1.1.1.5-.1 1.1z" />
+    </svg>
+    <span>WhatsApp</span>
+  </a>
+
+  <div class="demo-ribbon">Concept website · <b>demo</b></div>
+
+  <!-- ========================= BOOKING MODAL ========================= -->
+  <div class="modal" id="bookingModal" role="dialog" aria-modal="true" aria-labelledby="bookingTitle"
+    aria-hidden="true">
+    <div class="modal__panel">
+      <div class="modal__head">
+        <div>
+          <h3 id="bookingTitle">Book a free trial</h3>
+          <p>Demo flow — no live booking system is connected.</p>
+        </div>
+        <button class="modal__close" data-close aria-label="Close">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="stepper" aria-hidden="true"><i class="done"></i><i></i><i></i><i></i></div>
+
+      <!-- step 1 -->
+      <section class="pane is-active" data-pane="1">
+        <p class="step-label">Step 1 of 4 — pick a date</p>
+        <div class="chips" id="dateChips" role="group" aria-label="Choose a date"></div>
+        <div class="modal__actions">
+          <button class="btn btn--ghost" data-close type="button">Cancel</button>
+          <button class="btn" data-next="2" type="button" style="flex:1">Continue</button>
+        </div>
+      </section>
+
+      <!-- step 2 -->
+      <section class="pane" data-pane="2">
+        <p class="step-label">Step 2 of 4 — pick a time</p>
+        <div class="chips" id="timeChips" role="group" aria-label="Choose a time">
+          <button class="chip" type="button" data-val="6:30 AM"><b>6:30</b><span>AM</span></button>
+          <button class="chip" type="button" data-val="8:00 AM"><b>8:00</b><span>AM</span></button>
+          <button class="chip" type="button" data-val="10:00 AM"><b>10:00</b><span>AM</span></button>
+          <button class="chip" type="button" data-val="5:30 PM"><b>5:30</b><span>PM</span></button>
+          <button class="chip" type="button" data-val="7:00 PM"><b>7:00</b><span>PM</span></button>
+          <button class="chip" type="button" data-val="8:30 PM"><b>8:30</b><span>PM</span></button>
+        </div>
+        <div class="modal__actions">
+          <button class="btn btn--ghost" data-back="1" type="button">Back</button>
+          <button class="btn" data-next="3" type="button" style="flex:1">Continue</button>
+        </div>
+      </section>
+
+      <!-- step 3 -->
+      <section class="pane" data-pane="3">
+        <p class="step-label">Step 3 of 4 — your details</p>
+        <div class="form__grid" style="margin-top:0">
+          <div class="field field--full">
+            <label for="b-name">Full name</label>
+            <input id="b-name" type="text" placeholder="Your name" autocomplete="name">
+            <span class="field__err">Please enter your name.</span>
+          </div>
+          <div class="field field--full">
+            <label for="b-phone">Phone number</label>
+            <input id="b-phone" type="tel" placeholder="10-digit mobile" inputmode="numeric" autocomplete="tel">
+            <span class="field__err">Please enter a valid 10-digit number.</span>
+          </div>
+        </div>
+        <div class="modal__actions">
+          <button class="btn btn--ghost" data-back="2" type="button">Back</button>
+          <button class="btn" data-next="4" type="button" style="flex:1">Review</button>
+        </div>
+      </section>
+
+      <!-- step 4 -->
+      <section class="pane" data-pane="4">
+        <p class="step-label">Step 4 of 4 — confirm</p>
+        <dl class="summary" id="summary" style="margin-top:0"></dl>
+        <div class="modal__actions">
+          <button class="btn btn--ghost" data-back="3" type="button">Back</button>
+          <button class="btn" id="confirmBooking" type="button" style="flex:1">Confirm trial session</button>
+        </div>
+      </section>
+
+      <!-- done -->
+      <section class="pane" data-pane="5">
+        <div class="done-mark" aria-hidden="true">
+          <svg width="22" height="16" viewBox="0 0 22 16" fill="none">
+            <path d="M1 8l6.5 6.5L21 1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </div>
+        <h3 class="h3">Trial session requested</h3>
+        <p class="lead" style="font-size:.95rem;margin-top:.7rem" id="doneLine">We'll confirm your slot shortly.</p>
+        <p class="form__note" style="margin-top:1rem;max-width:46ch">
+          Simulated confirmation. On a live site this would reach the gym by email, SMS or WhatsApp,
+          and appear in a booking dashboard.
+        </p>
+        <div class="modal__actions">
+          <button class="btn btn--ghost" data-close type="button">Close</button>
+          <a class="btn" style="flex:1" target="_blank" rel="noopener"
+            href="https://wa.me/919327170936?text=Hi%20Gym%20Flex%2C%20I%27d%20like%20to%20book%20a%20free%20trial.">Send
+            on WhatsApp instead</a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- ========================= LIGHTBOX ========================= -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Gallery image" aria-hidden="true">
+    <button class="lb-btn lb-close" data-lb-close aria-label="Close gallery">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+        <path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+      </svg>
+    </button>
+    <button class="lb-btn lb-prev" data-lb-prev aria-label="Previous image">
+      <svg width="12" height="16" viewBox="0 0 12 16" fill="none" aria-hidden="true">
+        <path d="M9 1L2 8l7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+          stroke-linejoin="round" />
+      </svg>
+    </button>
+    <button class="lb-btn lb-next" data-lb-next aria-label="Next image">
+      <svg width="12" height="16" viewBox="0 0 12 16" fill="none" aria-hidden="true">
+        <path d="M3 1l7 7-7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+          stroke-linejoin="round" />
+      </svg>
+    </button>
+    <img id="lbImg" src="" alt="">
+    <p class="lightbox__cap" id="lbCap"></p>
+  </div>
+
+  <!-- ========================= TOAST ========================= -->
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+      <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5" />
+      <path d="M6 10.2l2.6 2.6L14 7.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+        stroke-linejoin="round" />
+    </svg>
+    <div><b id="toastTitle">Enquiry received</b><span id="toastBody">Demo only — nothing was actually sent.</span></div>
+  </div>
+
+  <script>
+    (function () {
+      'use strict';
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var $ = function (s, c) { return (c || document).querySelector(s); };
+      var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+
+      /* ---------- graceful image fallback ---------- */
+      $$('img').forEach(function (img) {
+        img.addEventListener('error', function () {
+          var host = img.parentElement;
+          if (host) {
+            host.classList.add('img-fail');
+            host.setAttribute('data-fallback', img.getAttribute('data-fallback') || 'Image');
+          }
+          img.style.visibility = 'hidden';
+        });
+      });
+
+      /* ---------- year ---------- */
+      $('#year').textContent = new Date().getFullYear();
+
+      /* ---------- hero entrance ---------- */
+      requestAnimationFrame(function () { $('.hero').classList.add('is-ready'); });
+
+      /* ---------- nav state + scroll progress ---------- */
+      var nav = $('#nav'), bar = $('#progressBar'), ticking = false;
+      function onScroll() {
+        var y = window.scrollY || 0;
+        nav.classList.toggle('is-stuck', y > 40);
+        var h = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.width = (h > 0 ? Math.min(y / h, 1) * 100 : 0) + '%';
+        ticking = false;
+      }
+      window.addEventListener('scroll', function () {
+        if (!ticking) { ticking = true; requestAnimationFrame(onScroll); }
+      }, { passive: true });
+      onScroll();
+
+      /* ---------- duplicate marquee content for a seamless loop ---------- */
+      var mq = $('#marquee');
+      if (mq && !reduced) { mq.innerHTML += mq.innerHTML; }
+
+      /* ---------- mobile menu ---------- */
+      var burger = $('#burger'), menu = $('#mobileMenu');
+      function setMenu(open) {
+        burger.setAttribute('aria-expanded', String(open));
+        burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        menu.classList.toggle('is-open', open);
+        menu.setAttribute('aria-hidden', String(!open));
+        document.body.classList.toggle('no-scroll', open);
+      }
+      burger.addEventListener('click', function () {
+        setMenu(burger.getAttribute('aria-expanded') !== 'true');
+      });
+      $$('.mobile-menu__link, .mobile-menu .btn').forEach(function (el) {
+        el.addEventListener('click', function () { setMenu(false); });
+      });
+
+      /* ---------- scroll spy ---------- */
+      var links = $$('.nav__link');
+      var sections = links.map(function (l) { return $(l.getAttribute('href')); }).filter(Boolean);
+      if ('IntersectionObserver' in window) {
+        var spy = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (!e.isIntersecting) return;
+            links.forEach(function (l) {
+              l.classList.toggle('is-active', l.getAttribute('href') === '#' + e.target.id);
+            });
+          });
+        }, { rootMargin: '-45% 0px -50% 0px' });
+        sections.forEach(function (s) { spy.observe(s); });
+      }
+
+      /* ---------- reveal on scroll ---------- */
+      var reveals = $$('.reveal');
+      if (reduced || !('IntersectionObserver' in window)) {
+        reveals.forEach(function (el) { el.classList.add('in'); });
+      } else {
+        var ro = new IntersectionObserver(function (entries, obs) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+          });
+        }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+        reveals.forEach(function (el) { ro.observe(el); });
+      }
+
+      /* ---------- counters ---------- */
+      var counters = $$('[data-count]');
+      function runCount(el) {
+        var target = parseFloat(el.getAttribute('data-count'));
+        var dec = parseInt(el.getAttribute('data-dec') || '0', 10);
+        if (reduced) { el.textContent = target.toFixed(dec); return; }
+        var start = performance.now(), dur = 1400;
+        function tick(now) {
+          var p = Math.min((now - start) / dur, 1);
+          var eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = (target * eased).toFixed(dec);
+          if (p < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      }
+      if ('IntersectionObserver' in window) {
+        var co = new IntersectionObserver(function (entries, obs) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { runCount(e.target); obs.unobserve(e.target); }
+          });
+        }, { threshold: 0.6 });
+        counters.forEach(function (c) { co.observe(c); });
+      } else {
+        counters.forEach(runCount);
+      }
+
+      /* ---------- toast ---------- */
+      var toast = $('#toast'), toastTimer;
+      function showToast(title, body) {
+        $('#toastTitle').textContent = title;
+        $('#toastBody').textContent = body;
+        toast.classList.add('is-on');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () { toast.classList.remove('is-on'); }, 5000);
+      }
+
+      /* ---------- generic dialog helpers ---------- */
+      var lastFocus = null;
+      function openDialog(el) {
+        lastFocus = document.activeElement;
+        el.classList.add('is-open');
+        el.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('no-scroll');
+        var f = el.querySelector('button, [href], input, select, textarea');
+        if (f) setTimeout(function () { f.focus(); }, 60);
+      }
+      function closeDialog(el) {
+        el.classList.remove('is-open');
+        el.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('no-scroll');
+        if (lastFocus) lastFocus.focus();
+      }
+      function trap(el, e) {
+        if (e.key !== 'Tab') return;
+        var f = $$('button, [href], input, select, textarea', el).filter(function (n) {
+          return n.offsetParent !== null && !n.disabled;
+        });
+        if (!f.length) return;
+        var first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+
+      /* ---------- booking flow ---------- */
+      var modal = $('#bookingModal');
+      var booking = { date: '', time: '', name: '', phone: '' };
+
+      // build the next 7 days
+      var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+      var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      var dateWrap = $('#dateChips');
+      for (var i = 0; i < 7; i++) {
+        var d = new Date(); d.setDate(d.getDate() + i);
+        var label = days[d.getDay()] + ', ' + d.getDate() + ' ' + months[d.getMonth()];
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'chip';
+        b.setAttribute('data-val', label);
+        b.innerHTML = '<b>' + d.getDate() + '</b><span>' + (i === 0 ? 'Today' : days[d.getDay()]) + '</span>';
+        dateWrap.appendChild(b);
+      }
+
+      function wireChips(wrap, key) {
+        wrap.addEventListener('click', function (e) {
+          var chip = e.target.closest('.chip');
+          if (!chip) return;
+          $$('.chip', wrap).forEach(function (c) { c.classList.remove('is-sel'); });
+          chip.classList.add('is-sel');
+          booking[key] = chip.getAttribute('data-val');
+        });
+      }
+      wireChips(dateWrap, 'date');
+      wireChips($('#timeChips'), 'time');
+
+      function goStep(n) {
+        $$('.pane', modal).forEach(function (p) {
+          p.classList.toggle('is-active', p.getAttribute('data-pane') === String(n));
+        });
+        $$('.stepper i', modal).forEach(function (s, idx) {
+          s.classList.toggle('done', idx < Math.min(n, 4));
+        });
+        modal.querySelector('.modal__panel').scrollTop = 0;
+      }
+
+      function markField(input, ok) {
+        input.closest('.field').classList.toggle('is-invalid', !ok);
+        return ok;
+      }
+      var phoneRe = /^[0-9]{10}$/;
+
+      modal.addEventListener('click', function (e) {
+        var t = e.target;
+        if (t.closest('[data-close]') || t === modal) { closeDialog(modal); return; }
+
+        var next = t.closest('[data-next]');
+        if (next) {
+          var n = parseInt(next.getAttribute('data-next'), 10);
+          if (n === 2 && !booking.date) { showToast('Pick a date', 'Choose a day for your trial session.'); return; }
+          if (n === 3 && !booking.time) { showToast('Pick a time', 'Choose a slot that suits you.'); return; }
+          if (n === 4) {
+            var bn = $('#b-name'), bp = $('#b-phone');
+            var okN = markField(bn, bn.value.trim().length > 1);
+            var okP = markField(bp, phoneRe.test(bp.value.replace(/\D/g, '')));
+            if (!okN || !okP) return;
+            booking.name = bn.value.trim();
+            booking.phone = bp.value.trim();
+            $('#summary').innerHTML =
+              '<div><dt>Name</dt><dd>' + booking.name + '</dd></div>' +
+              '<div><dt>Phone</dt><dd>' + booking.phone + '</dd></div>' +
+              '<div><dt>Date</dt><dd>' + booking.date + '</dd></div>' +
+              '<div><dt>Time</dt><dd>' + booking.time + '</dd></div>' +
+              '<div><dt>Session</dt><dd>Free trial</dd></div>';
+          }
+          goStep(n);
+          return;
+        }
+
+        var back = t.closest('[data-back]');
+        if (back) { goStep(parseInt(back.getAttribute('data-back'), 10)); }
+      });
+
+      $('#confirmBooking').addEventListener('click', function () {
+        $('#doneLine').textContent =
+          booking.name.split(' ')[0] + ', your slot on ' + booking.date + ' at ' + booking.time + ' has been noted.';
+        goStep(5);
+        showToast('Trial session requested', 'Demo only — nothing was actually sent.');
+      });
+
+      $$('[data-open-booking]').forEach(function (btn) {
+        btn.addEventListener('click', function () { goStep(1); openDialog(modal); });
+      });
+
+      /* ---------- plan enquiry ---------- */
+      $$('[data-plan]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var plan = btn.getAttribute('data-plan');
+          var select = $('#f-interest');
+          select.value = 'Gym membership';
+          $('#f-msg').value = "I'd like to know more about the " + plan + ' plan.';
+          $('#contact').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
+          setTimeout(function () { $('#f-name').focus(); }, reduced ? 0 : 700);
+          showToast(plan + ' plan', 'Enquiry form filled in below.');
+        });
+      });
+
+      /* ---------- enquiry form ---------- */
+      var form = $('#enquiryForm');
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var name = $('#f-name'), phone = $('#f-phone'), email = $('#f-email');
+        var ok = markField(name, name.value.trim().length > 1);
+        ok = markField(phone, phoneRe.test(phone.value.replace(/\D/g, ''))) && ok;
+        ok = markField(email, email.value === '' || /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value)) && ok;
+        if (!ok) { (form.querySelector('.is-invalid input') || name).focus(); return; }
+
+        var btn = form.querySelector('button[type="submit"]');
+        var original = btn.innerHTML;
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+        setTimeout(function () {
+          btn.disabled = false;
+          btn.innerHTML = original;
+          form.reset();
+          showToast('Thanks, ' + name.value.trim().split(' ')[0] + '!', 'Your enquiry has been received. (Demo — nothing was sent.)');
+        }, 800);
+      });
+      $$('#enquiryForm input').forEach(function (inp) {
+        inp.addEventListener('input', function () { inp.closest('.field').classList.remove('is-invalid'); });
+      });
+
+      /* ---------- lightbox ---------- */
+      var lb = $('#lightbox'), lbImg = $('#lbImg'), lbCap = $('#lbCap');
+      var shots = $$('.shot'), idx = 0;
+      function showShot(i) {
+        idx = (i + shots.length) % shots.length;
+        var s = shots[idx];
+        lbImg.src = s.getAttribute('data-full');
+        lbImg.alt = s.querySelector('img').alt;
+        lbCap.textContent = s.getAttribute('data-cap') + '  ·  ' + (idx + 1) + ' / ' + shots.length;
+      }
+      shots.forEach(function (s, i) {
+        s.addEventListener('click', function () { showShot(i); openDialog(lb); });
+      });
+      lb.addEventListener('click', function (e) {
+        if (e.target.closest('[data-lb-close]') || e.target === lb) { closeDialog(lb); }
+        else if (e.target.closest('[data-lb-prev]')) { showShot(idx - 1); }
+        else if (e.target.closest('[data-lb-next]')) { showShot(idx + 1); }
+      });
+
+      /* ---------- keyboard ---------- */
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          if (lb.classList.contains('is-open')) closeDialog(lb);
+          else if (modal.classList.contains('is-open')) closeDialog(modal);
+          else if (menu.classList.contains('is-open')) setMenu(false);
+        }
+        if (lb.classList.contains('is-open')) {
+          if (e.key === 'ArrowLeft') showShot(idx - 1);
+          if (e.key === 'ArrowRight') showShot(idx + 1);
+          trap(lb, e);
+        } else if (modal.classList.contains('is-open')) {
+          trap(modal, e);
+        }
+      });
+    })();
+  </script>
+</body>
+
+</html>
